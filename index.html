@@ -658,7 +658,7 @@ window.addEventListener('resize',()=>map?.invalidateSize());
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-backdrop.open').forEach(x=>x.classList.remove('open'));document.body.classList.remove('modal-open');if(document.body.classList.contains('map-full'))toggleFullMap()}});
 ['wRiskOverride','wRiskSource'].forEach(id=>document.addEventListener('input',e=>{if(e.target?.id===id)renderWizardRisk()}));
 ['cRiskOverride','cRiskSource'].forEach(id=>document.addEventListener('input',e=>{if(e.target?.id===id)renderCacheRiskPreview()}));
-(function init(){state.docs.forEach(d=>d.lines.forEach(applyReference));state.version='0.9.1';syncUnitSelector();$('roleSelect').value=state.role;renderAll();$('onhandDate').value=nowLocal()})();
+
 
 
 // ============================================================
@@ -822,6 +822,7 @@ const originalCommitImport=commitImport;commitImport=function(){if(wizard.lines.
 // Keep a request review across browser restarts without adding it to physical stock.
 const baseSmartMetaFields=smartMetaFields;smartMetaFields=function(){baseSmartMetaFields();if($('save581Review'))return;const button=document.createElement('button');button.id='save581Review';button.className='secondary';button.textContent='Save request review';button.onclick=()=>{const fields={};document.querySelectorAll('#importModal input[id]').forEach(el=>{if(el.type!=='file')fields[el.id]=el.value});localStorage.setItem('clams-smart581-review',JSON.stringify({fields,lines:wizard.lines,evidence:wizard.importEvidence}));toast('Request review saved locally. No physical inventory added.')};$('smartDiagnostics').after(button);const restore=document.createElement('button');restore.className='secondary';restore.textContent='Restore saved review';restore.onclick=()=>{try{const data=JSON.parse(localStorage.getItem('clams-smart581-review')||'null');if(!data)return toast('No saved request review.');stageSmartImport(data.evidence||{lines:data.lines,confidence:{},diagnostics:[],sourceType:'Saved review'});for(const [id,value]of Object.entries(data.fields))if($(id))$(id).value=value;wizard.lines=data.lines;renderWizardLines()}catch(e){toast('Unable to restore review: '+e.message,'bad')}};button.after(restore)};
 
+(function init(){state.docs.forEach(d=>d.lines.forEach(applyReference));state.version='0.10.1';syncUnitSelector();$('roleSelect').value=state.role;renderAll();$('onhandDate').value=nowLocal()})();
 </script>
 </body>
 </html>
