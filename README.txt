@@ -1,6 +1,6 @@
-CLAMS v0.10.2 Smart e581 Importer
+CLAMS v0.10.3 Smart e581 Importer
 
-Open CLAMS_v0.10.2_Smart_e581_Importer.html in a current browser, or deploy index.html from the GitHub Pages zip.
+Open CLAMS_v0.10.3_Smart_e581_Importer.html in a current browser, or deploy index.html from the GitHub Pages zip.
 
 Import > Image/PDF automatically extracts supported text-based DA Form 581 JUN 2021 landscape forms by block and table-column coordinates. The bundled PDF.js engine reads locally; PDF data is not sent to a parsing service. Scanned PDFs and other form layouts require manual review; this release does not include OCR. Confidence is rule-based extraction evidence, not a probability. Always compare the staged review with the source.
 
@@ -21,3 +21,5 @@ GitHub Pages package intentionally excludes the real PDF, extracted test results
 PDF.js is licensed under Apache License 2.0; see PDFJS-LICENSE.txt. Existing library notices remain embedded in the application.
 
 Brass matrix update: 5.56 mm nomenclature (with or without a space before MM) uses the existing 0.0135 lb/case factor as a user-authorized planning estimate when no explicit line/DODIC factor exists. Explicit N/A entries remain N/A. Other calibers remain unresolved until a factor is configured; values are never invented. AB77 with 10,000 issued calculates 135 lb. The source and screenshot test PDF are not included.
+
+Interactive PDF update: read named DA 581 form widgets before page text, including TAMIS/TACTMIS control-number fields, all issue rows, remarks and source blanks. Existing flattened text-form parsing remains supported. Both supplied PDFs tested.
