@@ -1,6 +1,6 @@
-CLAMS v0.10.3 Smart e581 Importer
+CLAMS v0.10.4 Smart e581 Importer
 
-Open CLAMS_v0.10.3_Smart_e581_Importer.html in a current browser, or deploy index.html from the GitHub Pages zip.
+Open CLAMS_v0.10.4_Smart_e581_Importer.html in a current browser, or deploy index.html from the GitHub Pages zip.
 
 Import > Image/PDF automatically extracts supported text-based DA Form 581 JUN 2021 landscape forms by block and table-column coordinates. The bundled PDF.js engine reads locally; PDF data is not sent to a parsing service. Scanned PDFs and other form layouts require manual review; this release does not include OCR. Confidence is rule-based extraction evidence, not a probability. Always compare the staged review with the source.
 
@@ -23,3 +23,12 @@ PDF.js is licensed under Apache License 2.0; see PDFJS-LICENSE.txt. Existing lib
 Brass matrix update: 5.56 mm nomenclature (with or without a space before MM) uses the existing 0.0135 lb/case factor as a user-authorized planning estimate when no explicit line/DODIC factor exists. Explicit N/A entries remain N/A. Other calibers remain unresolved until a factor is configured; values are never invented. AB77 with 10,000 issued calculates 135 lb. The source and screenshot test PDF are not included.
 
 Interactive PDF update: read named DA 581 form widgets before page text, including TAMIS/TACTMIS control-number fields, all issue rows, remarks and source blanks. Existing flattened text-form parsing remains supported. Both supplied PDFs tested.
+
+0.10.4 Reference and posture update
+- Rebuilt the Yellow Book snapshot from current CLVYB source (Revision 21). 3,723 current records plus retained legacy records. Numeric positive NEWQD/MCE is the storage-planning basis; note labels and unconfirmed zero are not numeric NEW. AB86 is 0.0079 lb/item, or 107.44 lb for 13,600 on-hand items. This does not substitute storage NEWQD for transportation NEW.
+- All-NSN consensus provides DODIC-wide NEW before NSN selection when every record has the same positive value. Differing or missing values still require an exact match. Source blank NSNs remain blank. Existing documents recalculate at startup. Refresh from CLVYB source is available in Reference settings and preserves the snapshot if offline.
+- Nomenclature caliber takes precedence over DODIC factors and N/A: 5.56 mm 0.0135, 7.62 mm 0.026, .50 cal 0.121, 9 mm 0.0009 lb per item, as explicitly supplied by the user. Other residue chart rules can be configured by nomenclature phrase/factor/source. The additional regulation chart has not been provided or verified.
+- Brass table distinguishes full-issue estimate from expended estimate. Expended estimate uses max(issue minus on-hand, 0); returns and count corrections can affect the estimate.
+- Both map views show main-node unit names. Unit/e581 posture shows remaining and estimated consumed quantities and percentages for each document and each line, consumed-line count, critical-line count, and a configurable critical-stock percentage (default 25%). These are RSR/CSR-style balance indicators; no supply rates are inferred without duration/demand data.
+- PowerPoint exports include the per-document/per-line balance slides with the same estimates and critical-stock marker. Existing aggregate unit slides remain available.
+- Validation: real text and interactive PDF fixtures, NEW consensus and conflicting variants, all four caliber factors and precedence, saved-workspace reload, map marker labels, partial consumption and critical lines, and actual PPTX export. No real operational records or test PDFs are included in this package.
