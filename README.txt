@@ -1,6 +1,6 @@
-CLAMS v0.10.5 — Table G-1 reference update
+CLAMS v0.10.6 — Table G-1 reference update
 
-Open index.html in a current browser or deploy this folder to GitHub Pages. The standalone distribution is CLAMS_v0.10.5_Table_G1.html. Existing maps, Excel imports and other external resources retain their internet requirements. PDF.js and its worker are embedded.
+Open index.html in a current browser or deploy this folder to GitHub Pages. The standalone distribution is CLAMS_v0.10.6_Table_G1.html. Existing maps, Excel imports and other external resources retain their internet requirements. PDF.js and its worker are embedded.
 
 DA PAM 700-16, 23 June 2021, Table G-1, printed page 126 / PDF page 131 is the brass/case weight reference. All 20 rows are included with their published decimal precision. Specific case types and materials take precedence over generic caliber rules and older DODIC factors. The official 9 mm value is 0.009 lb/case; it replaces the earlier user-supplied 0.0009. Marking 5.56 mm rounds use 0.0253. Ordinary brass 5.56 mm is 0.0135; brass 7.62 mm is 0.026; brass .50 cal is 0.121; steel .50 cal is 0.111.
 
@@ -17,3 +17,10 @@ Map markers use unit names. Presentation includes per-e581 and per-line remainin
 Validation: all 20 Table G-1 rows, 9 mm correction, marking/steel exceptions, ambiguous types, explicit subtype selection and wrong-caliber rejection; both real PDF formats; source blanks; NEW consensus/conflict; caliber precedence; stock bars; saved-workspace reload; map labels; and actual PPTX export. The real e581 PDFs and operational records are excluded from this package.
 
 PDF.js: Apache License 2.0, see PDFJS-LICENSE.txt. Existing library notices remain embedded.
+
+0.10.6 Presentation imagery and full-radius capture
+The presentation map clears earlier empty placeholders before Leaflet initializes, defers hidden-container initialization, and refits after layout, fullscreen, scope changes and resizing. Every valid main-site and cache location is included, and framing includes complete radius extents rather than only marker centers. Missing coordinates are reported by name; valid zero coordinates and recoverable MGRS are supported. Rings use a vivid outline and fill: red blast, amber thermal/fire, blue approved override. No new radius is invented for items without a computed or approved distance.
+Fit all resets the scene. Expand map opens the map across the window. Map image exports a 1920x1080 PNG of all in-scope locations and radius rings, including locations too far apart for readable individual rings in an overview. PowerPoint export adds the all-locations map plus an individual image slide for each radius-bearing location, with correctly scaled geographic rings. Existing paginated registers and source notes remain available. Print/PDF uses the same captured map image.
+Leaflet and MGRS, including control icons, are embedded to avoid map-engine startup downloads. Satellite imagery remains internet-dependent. Export waits for imagery or produces a clearly labeled geographic plot with all nodes/rings when tiles are unavailable; partial imagery is labeled. Live maps report imagery loading/failure separately from missing coordinates.
+Validation: three main sites, one cache, four rings, full ring framing in live and exported maps, map expansion, resizing, empty-to-populated recovery, scope changes, MGRS/zero coordinates, antimeridian, imagery failure, actual PowerPoint image slides, and real Esri imagery capture (40/40 tiles). Both e581 PDF formats, NEW calculations, all Table G-1 factors, saved-workspace reload and briefing export also passed regression checks. Synthetic map fixtures and operational source files are excluded from the deployment package.
+Leaflet and MGRS notices: LEAFLET-LICENSE.txt and MGRS-LICENSE.txt.
