@@ -1,3 +1,11 @@
+CLAMS v0.11.1 — XO Brief movement matrix — 29 October 2026
+
+Vehicle requirements and TDA now populate a combined panel directly below the map in the visible XO Brief grid. The panel shows the selected vehicle profile, required trucks/trailers, gross load, DODIC/quantity/package allocation, and saved route distance, drive, halt and total minutes. It uses the existing saved plan and respects the brief document/unit scope. Commander attention is retained beside the e581 status. The full-screen layout fits its header, KPIs, map and matrix within the screen; smaller layouts place the matrix immediately after the map. Map fitting reserves room for unit labels and full route/radius extents.
+
+PowerPoint includes a combined movement overview slide, with route imagery above vehicle and TDA tables. Detailed route and load slides remain available. Stale routes, partial loads and missing selections stay visible as such. The matrix displays scoped loads and route legs; it does not invent vehicle-to-route assignments.
+
+Verified: real full-screen layout at 1600x1000, responsive map/matrix order, AB86 13,600 rounds = 17 packages / 1,322.6 lb / 1 truck, TDA drive+halt totals, unit/document scopes, stale/empty states, and actual combined PPTX slide with imagery and both tables. Existing stock and planning data are preserved.
+
 CLAMS v0.11.0 — Logistics additions — 29 October 2026
 
 Open index.html, or deploy this folder at the GitHub Pages root.
