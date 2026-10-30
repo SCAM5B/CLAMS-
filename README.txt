@@ -4,7 +4,7 @@ Vehicle requirements and TDA now populate a combined panel directly below the ma
 
 PowerPoint includes a combined movement overview slide, with route imagery above vehicle and TDA tables. Detailed route and load slides remain available. Stale routes, partial loads and missing selections stay visible as such. The matrix displays scoped loads and route legs; it does not invent vehicle-to-route assignments.
 
-Verified: real full-screen layout at 1600x1000, responsive map/matrix order, AB86 13,600 rounds = 17 packages / 1,322.6 lb / 1 truck, TDA drive+halt totals, unit/document scopes, stale/empty states, and actual combined PPTX slide with imagery and both tables. Existing stock and planning data are preserved.
+Verified: real full-screen layout at 1600x1000 and compact 1090x562, responsive map/matrix order, AB86 13,600 rounds = 17 packages / 1,322.6 lb / 1 truck, TDA drive+halt totals, unit/document scopes, stale/empty states, and actual combined PPTX slide with imagery and both tables. Existing stock and planning data are preserved.
 
 CLAMS v0.11.0 — Logistics additions — 29 October 2026
 

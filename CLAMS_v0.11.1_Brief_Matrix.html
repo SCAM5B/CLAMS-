@@ -1657,6 +1657,40 @@ body.brief-full{overflow:hidden;background:#030506}body.brief-full .sidebar,body
 .brief-stage{display:flex;flex-direction:column}.brief-head,.brief-kpis{flex-shrink:0}.brief-grid,body.brief-full .brief-grid{height:auto;flex:1;min-height:0;grid-template-rows:minmax(0,1.15fr) minmax(0,1fr)}.brief-foot{position:static;flex-shrink:0;margin-top:8px}.movement-panel{grid-column:9 / span 4;grid-row:2}.brief-grid>.brief-panel:has(#briefUnits){grid-column:1 / span 4;grid-row:2}.brief-grid>.brief-panel:has(#briefDodics){grid-column:5 / span 4;grid-row:2}.movement-body{font-size:10px;line-height:1.35}.movement-fleet-title{font-weight:700;color:#dbf6e8;margin-bottom:6px}.movement-metrics{display:flex;gap:6px}.movement-metrics>div{flex:1;padding:6px 8px;background:#14231e;border:1px solid #2d5042;border-radius:6px}.movement-metrics strong{display:block;color:#79f2b2;font-size:17px}.movement-metrics span{display:block;color:#a9bcb3;font-size:9px}.movement-section{margin:9px 0 3px;font-size:9px;color:#f6d77d;letter-spacing:.05em}.movement-table{font-size:9px}.movement-table th{font-size:7.5px}.movement-table th,.movement-table td{padding:5px 3px;white-space:normal;overflow-wrap:anywhere}.movement-table th:first-child{width:40%}.movement-table td{vertical-align:top}.movement-note{font-size:8px;color:#98aeb5;margin:6px 0}.route-swatch{display:inline-block;padding:0 3px;border-left:4px solid;color:#fff}.movement-issues{color:#ffd166;font-size:9px;padding-top:6px}.movement-attention{border-top:1px solid #263239;flex:0 1 auto;max-height:32%;overflow:auto;padding:8px 10px}.movement-attention h4{font-size:9px;color:#f6d77d;letter-spacing:.07em;text-transform:uppercase;margin:0 0 5px}.movement-attention .brief-empty{padding:3px;min-height:0}.movement-attention .brief-alerts{display:flex;flex-wrap:wrap;gap:5px}.movement-attention .brief-alert{flex:1;min-width:180px}
 @media(max-width:1100px){.brief-stage{height:auto;aspect-ratio:auto}.brief-grid,body.brief-full .brief-grid{display:flex;flex-direction:column;height:auto;flex:none;overflow:visible}.brief-stage,body.brief-full .brief-stage{overflow:auto}.movement-panel{min-height:280px}.brief-grid>.brief-panel{flex:none}.brief-panel.map-panel{height:360px}.movement-body{overflow:visible}.movement-attention{max-height:none}}
 @media print{.brief-stage{height:auto!important;aspect-ratio:auto!important;overflow:visible!important}.brief-grid,body.brief-full .brief-grid{height:auto!important;flex:none!important;grid-template-rows:auto auto!important}.movement-panel{min-height:0;overflow:visible;break-inside:avoid}.movement-body{overflow:visible}.movement-attention{overflow:visible;max-height:none}.movement-table{font-size:9px}.movement-metrics>div{print-color-adjust:exact}}
+@media(min-width:900px){
+ body.brief-full .brief-stage{overflow:hidden;aspect-ratio:auto;height:100vh}
+ body.brief-full .brief-kpis{grid-template-columns:repeat(6,minmax(0,1fr))}
+ body.brief-full .brief-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:minmax(0,1.15fr) minmax(0,1fr);flex:1;min-height:0;height:auto;overflow:hidden}
+ body.brief-full .brief-grid>.brief-panel{min-height:0;height:auto}
+ body.brief-full .brief-grid>.brief-panel:has(#briefDocuments){grid-column:1 / span 8;grid-row:1}
+ body.brief-full .brief-grid>.map-panel{grid-column:9 / span 4;grid-row:1}
+ body.brief-full .brief-grid>.movement-panel{grid-column:9 / span 4;grid-row:2}
+ body.brief-full .movement-body{overflow:auto}
+}
+@media(min-width:900px) and (max-height:760px){
+ body.brief-full .brief-stage{padding:10px 14px}
+ body.brief-full .brief-head{padding-bottom:7px}
+ body.brief-full .brief-brand h1{font-size:19px}
+ body.brief-full .brief-brand img{width:38px;height:38px}
+ body.brief-full .brief-kpis{margin:7px 0;gap:6px}
+ body.brief-full .brief-kpi{padding:6px 8px}
+ body.brief-full .brief-kpi strong{font-size:18px;margin-top:2px}
+ body.brief-full .brief-grid{grid-template-rows:minmax(0,.9fr) minmax(0,1.15fr);gap:6px}
+ body.brief-full .brief-panel-head{padding:6px 8px;min-height:28px!important}
+ body.brief-full .brief-panel-head h3{font-size:8px}
+ body.brief-full .brief-panel-head>span{font-size:6px}
+ body.brief-full .movement-body{padding:5px 7px;line-height:1.2}
+ body.brief-full .movement-fleet-title{font-size:8px;margin-bottom:3px}
+ body.brief-full .movement-metrics>div{padding:3px 5px}
+ body.brief-full .movement-metrics strong{font-size:15px}
+ body.brief-full .movement-metrics span{font-size:7px}
+ body.brief-full .movement-section{font-size:7.5px;margin:5px 0 2px}
+ body.brief-full .movement-table{font-size:7.5px}
+ body.brief-full .movement-table th{font-size:6.5px}
+ body.brief-full .movement-table th,body.brief-full .movement-table td{padding:3px 2px}
+ body.brief-full .movement-note{font-size:6.5px;margin:3px 0}
+ body.brief-full .brief-foot{margin-top:5px;font-size:6px}
+}
 </style></head>
 <body>
 
@@ -2808,7 +2842,7 @@ async function addMovementOverviewSlides(pptx,slides,summary){const m=briefMovem
  }
 }
 // Reserve room for unit labels as well as the complete route and radius extents.
-fitBriefMapAll=function(){if(!briefMap||!briefMapVisible()||!briefSceneState?.bounds)return;briefMap.invalidateSize({pan:false});const b=L.latLngBounds(sceneLeafletBounds(briefSceneState)),center=b.getCenter().lng;visibleRoutes(briefNodes()).filter(r=>routeCurrent(r)).forEach(r=>r.geometry.forEach(p=>b.extend([p[1],p[0]+360*Math.round((center-p[0])/360)])));const w=$('briefMap').clientWidth;briefMap.fitBounds(b,{paddingTopLeft:[Math.min(65,w*.15),55],paddingBottomRight:[Math.min(175,w*.4),65],maxZoom:16,animate:false})};
+fitBriefMapAll=function(){if(!briefMap||!briefMapVisible()||!briefSceneState?.bounds)return;briefMap.invalidateSize({pan:false});const b=L.latLngBounds(sceneLeafletBounds(briefSceneState)),center=b.getCenter().lng;visibleRoutes(briefNodes()).filter(r=>routeCurrent(r)).forEach(r=>r.geometry.forEach(p=>b.extend([p[1],p[0]+360*Math.round((center-p[0])/360)])));const w=$('briefMap').clientWidth,h=$('briefMap').clientHeight;briefMap.fitBounds(b,{paddingTopLeft:[Math.min(65,w*.15),Math.min(55,h*.15)],paddingBottomRight:[Math.min(175,w*.4),Math.min(65,h*.2)],maxZoom:16,animate:false})};
 
 (function init(){state.docs.forEach(d=>d.lines.forEach(applyReference));state.version='0.11.1';syncUnitSelector();$('roleSelect').value=state.role;renderAll();$('onhandDate').value=nowLocal()})();
 </script>
