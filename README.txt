@@ -1,3 +1,27 @@
+CLAMS v0.11.0 — Logistics additions — 29 October 2026
+
+Open index.html, or deploy this folder at the GitHub Pages root.
+Existing browser workspace, roles, e581s, caches and balances are preserved.
+Use the same browser and website address to retain the existing workspace.
+
+What's new
+- Import e581: drop one PDF into the drop zone or click to browse. Excel/CSV and image upload choices removed. PDF parsing and manual review remain.
+- e581 register: BAO can add/correct a lot after import under Admin / lot numbers. History records the old/new lot; counts and cache allocations are preserved. One lot per line.
+- Documents / Inventory: select entire e581, main site or cache, enter physical counts, then Capture inventory / Print / PDF. Report lists DODIC, nomenclature, quantity, lot and line NEW with a grand total. Missing NEW is flagged as incomplete; zero is not substituted. Dated snapshots are included in CLAMS backups. This does not automatically post count changes; use On-Hand for balance adjustments.
+- TDA: select two known locations. Get road estimate requests a route from public OSRM using only the two coordinates, after the user presses that button. The road trace, distance, driving minutes, planned halt and leg breakdown are saved. No live traffic, convoy delay or vehicle-clearance model. Manual/offline mode accepts a verified road distance and planning speed and draws a dashed endpoint connector, clearly labeled as not a road trace. Changed/missing endpoints mark a saved route stale.
+- Vehicle requirements: select e581 lines and movement quantities; choose a CLVYB package/load pattern, truck, optional companion trailer, pallet/package mode, stacking layers and reserved payload. Optional verified cargo-capacity overrides are supported. Missing packaging, classification, fit or quantities produce partial results. Requirements are for one lift with one vehicle type. Counts are not reduced by planning a movement.
+- XO Brief / Print / PowerPoint: scoped TDA routes and vehicle allocation tables are included. Colored routes are included in full-map imagery exports; map fitting includes route geometry as well as all node/ring extents. Existing NEW, Table G-1 brass and map features retained.
+
+Reference implementation
+GroundFleet and LoadCore are copied unchanged from SCAM5B/clv-yellow-book snapshot a1743e7af17744f33c17d59e9f84537e1087eb59. Embedded CAPULDI: 16,660 records from the same CLVYB package data. Missing values remain missing. Vehicle source links are shown in the app. Packaging gross weight is distinct from storage NEW/QD/MCE; storage NEW is not substituted as transport NEW.
+OSRM API documentation: https://github.com/Project-OSRM/osrm-backend/blob/master/docs/http.md
+Source CLVYB: https://github.com/SCAM5B/clv-yellow-book
+
+Validation
+Both real TAMIS DA 581 fixtures passed (W506V162960001 and W90FZM62891023); blank issued/lot fields preserved. PDF drag/drop, BAO lot audit and cache propagation, inventory counts/PDF, unresolved NEW, vehicle allocation and capacity overrides, route success/failure, route capture, persistence and actual PPTX output checked. Existing NEW/brass/posture/PDF regression checks passed. Real routing checked with public Berlin sample coordinates. No real e581 fixture or user workspace is packaged.
+
+Previous release notes follow.
+
 CLAMS v0.10.6 — Table G-1 reference update
 
 Open index.html in a current browser or deploy this folder to GitHub Pages. The standalone distribution is CLAMS_v0.10.6_Table_G1.html. Existing maps, Excel imports and other external resources retain their internet requirements. PDF.js and its worker are embedded.
