@@ -1,0 +1,46 @@
+CLAMS 1.0 CASCOM pilot candidate — development readiness record
+Assessment date: 2 November 2026
+Baseline: v0.11.1; next increment: v0.12.0 Accountability
+
+Purpose
+Give the BAO a traceable picture of where ammunition is located, how much remains, and what requires action after ASP issue. A development release is not an approval, accreditation, or CASCOM acceptance.
+
+Implemented before this increment
+- PDF-only, form-aware DA 581 import, with diagnostics and manual review.
+- Requested and issued quantities kept separate; confirmed issue required before physical inventory is created.
+- CLVYB reference enrichment, NEW consensus rules, Table G-1 residue conversion.
+- On-hand counts, caches, inventory reports, maps and scoped briefing exports.
+- Vehicle capacity estimates and saved TDA legs shown together beneath the XO map.
+
+v0.12.0 increment
+- Recorded-by operator name and role, recording timestamp, effective count timestamp, action, source, note, document/unit and structured before/after values.
+- Whole-transaction validation for physical counts. Invalid later rows or locations leave every earlier row unchanged. Blank counts are not zero; fractional quantities are rejected.
+- Quantity changes require a source/reason note. Counts cannot be below active cache allocations or have a future effective time.
+- Cache creation, edits, dissolution, lots, NSN selection, residue case selection, import and closeout recorded.
+- Archived records retained, with BAO restore; no destructive Start blank action.
+- Backup restore preserves local audit history and archives records absent from the restored backup. Invalid balances and duplicate IDs are rejected.
+- Failed storage writes roll back the transaction. A tab with an outdated workspace cannot overwrite a newer save from another tab.
+- Search/filter audit history, scoped JSON export and Print / PDF. Existing older count and lot history remains in On-Hand and the audit export.
+
+Evidence and limits
+Operator names are self-declared. Local role selection is a workflow filter, not authentication or an enterprise access boundary. The browser journal is editable by someone with device/storage access and is not tamper-proof. Detailed before-values begin with this release; prior values are not invented.
+Backups include the journal. Operational source PDFs are not included in a public app package. Original-file retention remains a separate development item; parser evidence alone is not a retained source document.
+
+Remaining gates before a 1.0 pilot candidate
+1. Source traceability: retain original PDFs in a durable local or approved document store, attach an integrity digest, provide reopen/export, and verify backup recovery.
+2. Import acceptance: expand a sanitized test set across multi-page, interactive, text and scanned layouts; measure field correctness and explicitly report unsupported layouts. Do not add Excel/CSV back to the user workflow.
+3. BAO attention: stale LOGSTAT thresholds, training complete / turn-in due, missing locations, balance conflicts and unresolved reference data; each alert must show evidence and an action path.
+4. Forecasting: use timestamped counts plus explicit return/correction classification and training demand. Do not treat every count decrease as expenditure. Report insufficient history and assumptions.
+5. Pilot package: versioned operator guide, test results, restore drill, known limitations, pilot scenarios, feedback form and measurable outcomes.
+6. Enterprise design: approved hosting/data classification, authenticated CAC/Entra identity, enforced unit authorization, central protected audit records, approved source-document store, integration specifications and an agency security/accreditation review.
+
+Proposed pilot measurements (targets to be agreed with sponsor)
+- Import time and correction count per DA 581.
+- Field accuracy against manually verified source records.
+- Percentage of active quantity/location changes with operator, timestamp and source.
+- Time from count report to BAO picture and alert acknowledgement.
+- Successful backup/restore recovery with matching documents, quantities and event counts.
+- Time to produce a complete XO brief, including all locations and movement tables.
+
+Immediate next increment
+Original-source retention and recovery, followed by the expanded BAO attention panel. Keep the existing interface and confirmed v0.11.1 logistics features intact.

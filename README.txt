@@ -1,3 +1,15 @@
+CLAMS v0.12.0 — Accountability increment — 2 November 2026
+
+Recorded-by identity, structured audit history and atomic physical-count updates are now available. Operator names are self-declared; no CAC authentication is implied. Open Audit history to search/filter changes, inspect before/after values, export JSON, or print/save PDF. The same browser workspace key is retained.
+
+Changes covered: physical counts, main-site location updates, cache creation/edit/dissolution, lot corrections, NSN and residue case selections, e581 import and closeout. Count changes require a source/reason note. Counts are validated together before saving; blank/fractional counts, invalid grids, future count times and counts below cache allocations are rejected. Storage failures roll back the transaction. Conflicting writes from another browser tab require a reload.
+
+Start blank is replaced with Archive workspace records. BAO can restore archived records from Archived history. Backups preserve the journal; restoration retains prior local audit events and archives records absent from the incoming backup. Earlier count/lot history remains available; older before-values are not invented.
+
+Verified: invalid multi-line count rollback, source notes, operator and before/after values, cache/lot/close history, unit scope, archive/restore, malformed backups, persistence, storage failure, multi-tab conflict, scoped audit export; both real PDF layouts, NEW and Table G-1 calculations, map labels, full/compact XO matrix and PowerPoint exports.
+
+This is a development increment toward a 1.0 CASCOM pilot candidate. CLAMS_Pilot_Readiness.txt records implemented capabilities, remaining gates and proposed pilot measurements. Original PDF retention/recovery, expanded alerts, forecasting and enterprise identity/storage are still pending. No operational records or test fixtures are included in the deployment package.
+
 CLAMS v0.11.1 — XO Brief movement matrix — 29 October 2026
 
 Vehicle requirements and TDA now populate a combined panel directly below the map in the visible XO Brief grid. The panel shows the selected vehicle profile, required trucks/trailers, gross load, DODIC/quantity/package allocation, and saved route distance, drive, halt and total minutes. It uses the existing saved plan and respects the brief document/unit scope. Commander attention is retained beside the e581 status. The full-screen layout fits its header, KPIs, map and matrix within the screen; smaller layouts place the matrix immediately after the map. Map fitting reserves room for unit labels and full route/radius extents.
